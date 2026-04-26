@@ -1,0 +1,27 @@
+{
+  "entities": {
+    "QuizResult": {
+      "title": "Quiz Result",
+      "description": "Stores the result of a quiz attempt",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "score": { "type": "number" },
+        "totalQuestions": { "type": "number" },
+        "answers": { 
+          "type": "array",
+          "description": "List of question indices and the chosen answer"
+        },
+        "completedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userName", "score", "totalQuestions", "completedAt"]
+    }
+  },
+  "firestore": {
+    "/results/{resultId}": {
+      "schema": "QuizResult",
+      "description": "Collection of quiz results"
+    }
+  }
+}
